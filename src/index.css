@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #a855f7;
+  --color-accent-light: #c084fc;
+  --color-accent-dark: #9333ea;
+  
+  --background-image-glass-gradient: linear-gradient(145deg, rgba(30,30,50,0.6) 0%, rgba(15,15,25,0.8) 100%);
+  
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[#030308] text-slate-200 min-h-screen font-sans antialiased selection:bg-purple-500/30;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(168, 85, 247, 0.03) 0px, transparent 50%);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-glass-gradient border border-white/[0.05] backdrop-blur-2xl rounded-[2rem] shadow-2xl;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-400 to-blue-400;
+  }
+  
+  .btn-primary {
+    @apply px-8 py-4 bg-accent hover:bg-accent-dark text-white font-bold rounded-2xl transition-all duration-300 shadow-xl shadow-purple-500/10 hover:shadow-purple-500/30 transform hover:-translate-y-1 active:scale-95;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #030308;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
